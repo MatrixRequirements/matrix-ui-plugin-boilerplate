@@ -11,13 +11,15 @@ namespace BoilerPlate {
         public isDefault = true;
         currentFolder: IItem;
         popupModeOrControl: boolean;
-        public static fieldType = "matrix-ui-plugin-boilerplate";
+        public static fieldType = "plugin_boiler_plate";
+        public static projectSettingName = "plugin_boiler_plate";
+        public static serverSettingName = "plugin_boiler_plate";
 
         static PLUGIN_NAME = "<PLUGIN_NAME_PLACEHOLDER>";
         static PLUGIN_VERSION = "<PLUGIN_VERSION_PLACEHOLDER>";
     
     
-        static settingName = "matrix-ui-plugin-boilerplate_settings";
+        static settingName = "plugin_boiler_plater_settings";
 
         static defaultProjectSettings: IProjectSettings = {
             content: "boiler plate",
@@ -47,8 +49,8 @@ namespace BoilerPlate {
         }
 
         updateMenu(ul: JQuery, _hook: number) {
-            const li = $(`<li>matrix-ui-plugin-boilerplate</li>`).on("click",() => {
-                alert("Plugin matrix-ui-plugin-boilerplate");
+            const li = $(`<li>PluginBoilerPlate </li>`).on("click",() => {
+                alert("Plugin boiler plate");
             });
 
             ul.append(li);
@@ -98,7 +100,7 @@ namespace BoilerPlate {
             return [
                 {
                     id: "BPP_ProjectSettings",
-                    title: "matrix-ui-plugin-boilerplate  customer settings page",
+                    title: "Boiler plate plugin customer settings page",
                     render: (_ui: JQuery) => {
                         pbpi.renderSettingPage();
                     },
@@ -112,8 +114,8 @@ namespace BoilerPlate {
         getProjectPages(): IProjectPageParam[] {
             const pages: IProjectPageParam[] = [];
             pages.push({
-                id: "BPP",
-                title: "matrix-ui-plugin-boilerplate  dashboard",
+                id: "BOILERPLATE",
+                title: "Boiler plater plugins",
                 folder: "DASHBOARDS",
                 order: 7000,
                 icon: "fa fa-cog",
