@@ -1,10 +1,10 @@
 {
-  "name": "boilerplate-plugin",
+  "name": "matrix-ui-plugin-boilerplate",
   "version": "1.0.0",
-  "description": "Boilter plate Plugin",
+  "description": "Awesome matrix-ui-plugin-boilerplate created by francoischasseur",
   "main": "index.js",
   "repository": {
-    "url": "https://github.com/francoischasseur/matrix-boilerplate"
+    "url": "https://github.com/MatrixRequirements/matrix-ui-plugin-boilerplate"
   },
   "scripts": {
     "build": "tsc -b",
