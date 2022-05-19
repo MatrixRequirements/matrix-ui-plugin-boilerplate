@@ -7,7 +7,7 @@ namespace BoilerPlate {
         if (window["ConfigPage"] !== undefined) {
             self = { ...Object.getPrototypeOf(new ConfigPage()) };
         }
-        self.serverSettings = { ...Plugin.defaultServerSettings, ...configApp.getServerSetting(Plugin.serverSettingName, {}) };
+        self.serverSettings = { ...Plugin.defaultServerSettings, ...configApp.getServerSetting(Plugin.settingName, {}) };
         
         self.renderSettingPage = () => {
          
@@ -40,7 +40,7 @@ namespace BoilerPlate {
         };
         
         self.saveAsync = () => {
-            return configApp.setServerSettingAsync( Plugin.projectSettingName, JSON.stringify(self.settingsChanged));
+            return configApp.setServerSettingAsync( Plugin.settingName, JSON.stringify(self.settingsChanged));
         }
 
         self.paramChanged = () => {

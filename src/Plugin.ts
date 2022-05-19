@@ -82,7 +82,7 @@ namespace BoilerPlate {
             return [
                 {
                     id: "BPP_customerSettings",
-                    title: "Boiler plate plugin project settings page",
+                    title: "matrix-ui-plugin-boilerplate plugin project settings page",
                     render: (_ui: JQuery) => {
                         pbpi.renderSettingPage();
                     },

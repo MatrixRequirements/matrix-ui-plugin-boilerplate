@@ -9,7 +9,7 @@ namespace BoilerPlate {
         }
 
         
-        self.serverSettings = { ...Plugin.defaultServerSettings, ...configApp.getServerSetting(Plugin.serverSettingName, {}) };
+        self.serverSettings = { ...Plugin.defaultServerSettings, ...configApp.getServerSetting(Plugin.settingName, {}) };
         self.renderSettingPage = () => {
             self.initPage(
                 `${ Plugin.PLUGIN_NAME } - Project settings` ,
@@ -22,7 +22,7 @@ namespace BoilerPlate {
             self.showSimple();
         };
         self.saveAsync = ()=> {
-            return configApp.setProjectSettingAsync(self.getProject(), Plugin.projectSettingName, JSON.stringify(self.settingsChanged), configApp.getCurrentItemId());
+            return configApp.setProjectSettingAsync(self.getProject(), Plugin.settingName, JSON.stringify(self.settingsChanged), configApp.getCurrentItemId());
         }
         self.getProject = () => {
             return configApp.getCurrentItemId().split("-")[0];
@@ -37,7 +37,7 @@ namespace BoilerPlate {
         };
         self.showSimple = () => {
 
-            const settings = IC.getSettingJSON(Plugin.projectSettingName, {});
+            const settings = IC.getSettingJSON(Plugin.settingName, {});
             self.settingsOriginal = { ...Plugin.defaultProjectSettings, ...settings };
             if (!self.settingsChanged)
                 self.settingsChanged = { ...Plugin.defaultProjectSettings, ...settings };
