@@ -9,7 +9,7 @@ namespace BoilerPlate {
 
         getDashboardDOM(): JQuery {
             return $(`
-        <div class="panel-body-v-scroll fillHeight">
+        <div class="panel-body-v-scroll fillHeight"> 
             <div class="panel-body">
                 This is my content : ${this.settings.content}
             </div>
