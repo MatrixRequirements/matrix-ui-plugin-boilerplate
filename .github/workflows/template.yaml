@@ -30,7 +30,7 @@ jobs:
 
       - name: Rename the project
         run: |
-          echo "Renaming the project with -a ${{ env.REPOSITORY_OWNER }} -n ${{ env.REPOSITORY_NAME }} -p ${{ inputs.prefix }}  -u ${{ env.REPOSITORY_URLNAME }} -d "Awesome ${{ env.REPOSITORY_NAME }} created by ${{ env.REPOSITORY_OWNER }}"
+          echo Renaming the project with -a ${{ env.REPOSITORY_OWNER }} -n ${{ env.REPOSITORY_NAME }} -p ${{ inputs.prefix }}  -u ${{ env.REPOSITORY_URLNAME }} -d "Awesome ${{ env.REPOSITORY_NAME }} created by ${{ env.REPOSITORY_OWNER }}"
           bash .github/rename_project.sh -a ${{ env.REPOSITORY_OWNER }} -n ${{ env.REPOSITORY_NAME }} -p ${{ inputs.prefix }}  -u ${{ env.REPOSITORY_URLNAME }} -d "Awesome ${{ env.REPOSITORY_NAME }} created by ${{ env.REPOSITORY_OWNER }} "
       -  name: Push to master
          uses: ad-m/github-push-action@master

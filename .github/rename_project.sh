@@ -1,6 +1,6 @@
 
 #!/usr/bin/env bash
-while getopts a:n:u:d: flag
+while getopts a:n:u:d:p: flag
 do
     case "${flag}" in
         a) author=${OPTARG};;
