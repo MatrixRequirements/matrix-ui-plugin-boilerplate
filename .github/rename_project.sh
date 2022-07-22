@@ -15,6 +15,7 @@ echo "Author: $author";
 echo "Project Name: $name";
 echo "Project URL name: $urlname";
 echo "Description: $description";
+echo "Prefix: $prefix";
 
 #remove ui-plugin
 
