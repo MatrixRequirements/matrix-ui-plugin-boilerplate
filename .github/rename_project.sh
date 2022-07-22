@@ -51,8 +51,8 @@ cd ..
 
 git mv ./src/BPP ./src/$prefix
 
-git rm .github/rename_project.sh
-git rm .github/workflows/template.yaml
+#git rm .github/rename_project.sh
+#git rm .github/workflows/template.yaml
 
 git commit -m "Rename template to project $cameCase" -a
 
