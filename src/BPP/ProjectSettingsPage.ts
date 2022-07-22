@@ -1,5 +1,7 @@
-// eslint-disable-next-line no-unused-vars
-namespace BoilerPlate {
+import { IPluginSettingPage } from "./core/PluginCore";
+import { IProjectSettings } from "./Interfaces";
+import { Plugin } from "./Main";
+
     /* project Setting page closure*/
     export function ProjectSettingsPage():IPluginSettingPage <IProjectSettings>{
         let self: IPluginSettingPage<IProjectSettings> = {};
@@ -63,4 +65,3 @@ namespace BoilerPlate {
       
         return self;
     }
-}

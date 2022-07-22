@@ -1,7 +1,13 @@
 name: Rename from matrix-ui-plugin-boilerplate to new project name
 
-on: workflow_dispatch
-
+on: 
+  workflow_dispatch:
+    inputs:
+      prefix:
+        description: 'Please specify a 3 letters prefix for your plugin '
+        default: 'BPP'
+        required: true
+        type: string
 jobs:
   rename-project:
     if: ${{ github.repository	!= 'MatrixRequirements/matrix-ui-plugin-boilerplate' }}
@@ -26,7 +32,7 @@ jobs:
       - name: Rename the project
         run: |
           echo "Renaming the project with -a(author) ${{ env.REPOSITORY_OWNER }} -n(name) ${{ env.REPOSITORY_NAME }} -u(urlname) ${{ env.REPOSITORY_URLNAME }} -t ${{ secrets.GITHUB_TOKEN }}"
-          bash .github/rename_project.sh -a ${{ env.REPOSITORY_OWNER }} -n ${{ env.REPOSITORY_NAME }} -u ${{ env.REPOSITORY_URLNAME }} -d "Awesome ${{ env.REPOSITORY_NAME }} created by ${{ env.REPOSITORY_OWNER }}"
+          bash .github/rename_project.sh -a ${{ env.REPOSITORY_OWNER }} -n ${{ env.REPOSITORY_NAME }} -u ${{ env.REPOSITORY_URLNAME }} -d "Awesome ${{ env.REPOSITORY_NAME }} created by ${{ env.REPOSITORY_OWNER }} -p  ${{ inputs.prefix }}"
       -  name: Push to master
          uses: ad-m/github-push-action@master
          with:

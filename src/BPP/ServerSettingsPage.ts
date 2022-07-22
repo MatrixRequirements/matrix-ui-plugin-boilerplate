@@ -1,5 +1,8 @@
+import { IPluginSettingPage } from "./core/PluginCore";
+import { IServerSettings } from "./Interfaces";
+import { Plugin } from "./Main";
+
 // eslint-disable-next-line no-unused-vars
-namespace BoilerPlate {
     /* server Setting page closure*/
     export function ServerSettingsPage(): IPluginSettingPage<IServerSettings> {
         
@@ -67,4 +70,3 @@ namespace BoilerPlate {
      
         return self;
     }
-}

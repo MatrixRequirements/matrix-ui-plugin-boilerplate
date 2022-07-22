@@ -7,8 +7,7 @@ do
         n) name=${OPTARG};;
         u) urlname=${OPTARG};;
         d) description=${OPTARG};;
-        n) namespaceName=${OPTARG};;
-        i) pageid=${OPTARG};;
+        p) prefix=${OPTARG};;
     esac
 done
 
@@ -21,21 +20,13 @@ echo "Description: $description";
 
 pageName=$(sed -r 's/(ui-plugin-)(.*)/\2/g' <<< "$urlname")
 cameCase=$(sed -r 's/(^|-)(\w)/\U\2/g' <<<"$pageName")
-namespace="namespace $cameCase"
-plugin="new $cameCase.Plugin()"
-settings="IPlugin$cameCase"
 
-echo "$cameCase $namespace $settings $pageid"
-
-
+echo "$cameCase $namespace $prefix"
 echo "Renaming project..."
 
 original_author="MatrixRequirements"
 original_name="matrix-ui-plugin-boilerplate"
 original_description=" matrix-ui-plugin-boilerplate created by someone"
-original_setting="IPluginBoilerPlate"
-original_namespace="namespace BoilerPlate"
-original_plugin="new BoilerPlate.Plugin()"
 original_pageid="BPP"
 
 for filename in $(git ls-files) 
@@ -45,34 +36,21 @@ do
    [[ $filename != .github* ]] &&  sed -i "s/$original_name/$name/g" "$filename"
    [[ $filename != .github* ]] &&  sed -i "s/$original_author/$author/g" "$filename"
    [[ $filename != .github* ]] &&  sed -i "s/$original_description/$description/g" "$filename"
-   [[ $filename != .github* ]] &&  sed -i "s/$original_setting/$settings/g" "$filename"
-   [[ $filename != .github* ]] &&  sed -i "s/$original_namespace/$namespace/g" "$filename"
-   [[ $filename != .github* ]] &&  sed -i "s/$original_pageid/$pageid/g" "$filename"
-   [[ $filename != .github* ]] &&  sed -i "s/$original_plugin/$plugin/g" "$filename"
+   [[ $filename != .github* ]] &&  sed -i "s/$original_pageid/$prefix/g" "$filename"
    [[ $filename != .github* ]] &&  echo "$filename fixed"
-<<<<<<< HEAD
- 
- 
-done
-
-mv src/_*.ts src/$pageid_*.ts
-=======
  done
 
 cd src
 
-echo "renaming source"
-
-for filename in $(git ls-files) 
-do    
-    [[ $filename = _* ]] && echo  "$filename -->  $pageid$filename"
-    [[ $filename = _* ]] &&  git mv $filename $pageid$filename 
-done
 
 
 git config --local user.email action@github.com
 git config --local user.name GitHub Action
 cd ..
+
+git mv _global.ts $prefix_global.ts 
+git mv BPP $prefix
+
 git rm .github/rename_project.sh
 git rm .github/workflows/template.yaml
 
@@ -80,6 +58,4 @@ git commit -m "Rename template to project $cameCase" -a
 
 
 
-
 # This command runs only once on GHA!
->>>>>>> 7176498e31f7f410dfa08173b8a32f1655701e86

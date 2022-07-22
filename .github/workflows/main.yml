@@ -52,7 +52,7 @@ jobs:
       - name: Install dependencies and compile
         run: |
           npm install
-          npm run build
+          npm run parcel-dist
 
       - name: Lint the code
         run: |
@@ -61,7 +61,8 @@ jobs:
       - name: Copy the build result
         run: |
           mkdir -p dist/js
-          mv dist/plugin.js dist/js/${{steps.name.outputs.value}}.js
+          mv dist/Main.js dist/js/${{steps.name.outputs.value}}.js
+          mv dist/Main.js.map dist/js/${{steps.name.outputs.value}}.js.map
 
       - uses: actions/upload-artifact@v2
         with:

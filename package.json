@@ -12,7 +12,9 @@
     "pretty": "prettier --write src/",
     "clean": "rm -rf dist",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src --ext .ts"
+    "lint": "eslint src --ext .ts",
+    "parcel": "parcel watch src/BPP/Main.ts --public-url /static/js/ --out-dir /home/clouds/clouds/custom/js --no-hmr",
+    "parcel-dist": "parcel build s src/BPP/Main.ts --public-url /static/js/ --out-dir ./dist"
   },
   "author": "",
   "license": "ISC",
@@ -23,5 +25,8 @@
     "eslint": "^8.11.0",
     "prettier": "^2.2.1",
     "typescript": "^4.1.5"
+  },
+  "dependencies": {
+    "parcel-bundler": "^1.12.4"
   }
 }
