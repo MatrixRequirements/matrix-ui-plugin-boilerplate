@@ -48,8 +48,7 @@ git config --local user.email action@github.com
 git config --local user.name GitHub Action
 cd ..
 
-git mv _global.ts $prefix_global.ts 
-git mv BPP $prefix
+git mv ./src/BPP ./src/$prefix
 
 git rm .github/rename_project.sh
 git rm .github/workflows/template.yaml
