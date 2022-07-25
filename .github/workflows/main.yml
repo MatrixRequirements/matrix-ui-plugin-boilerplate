@@ -61,6 +61,7 @@ jobs:
       - name: Copy the build result
         run: |
           mkdir -p dist/js
+          sed -i 's/Main.js.map/${{steps.name.outputs.value}}.js.map/' dist/Main.js
           mv dist/Main.js dist/js/${{steps.name.outputs.value}}.js
           mv dist/Main.js.map dist/js/${{steps.name.outputs.value}}.js.map
 

@@ -7,7 +7,6 @@
     "url": "https://github.com/MatrixRequirements/matrix-ui-plugin-boilerplate"
   },
   "scripts": {
-    
     "pretty": "prettier --write src/",
     "clean": "rm -rf dist",
     "test": "echo \"Error: no test specified\" && exit 1",
