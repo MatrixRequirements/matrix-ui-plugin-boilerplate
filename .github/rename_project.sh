@@ -33,7 +33,7 @@ original_pageid="BPP"
 
 
 
- sed -i "s/$original_pageid/$prefix-$guid/g" "src/package.json"
+ sed -i "s/$original_pageid/$prefix-$guid/g" "package.json"
 
 
 for filename in $(git ls-files) 
