@@ -31,6 +31,11 @@ original_name="matrix-ui-plugin-boilerplate"
 original_description=" matrix-ui-plugin-boilerplate created by someone"
 original_pageid="BPP"
 
+
+
+ sed -i "s/$original_pageid/$prefix-$guid/g" "src/package.json"
+
+
 for filename in $(git ls-files) 
 do
     echo "Processing $filename"
