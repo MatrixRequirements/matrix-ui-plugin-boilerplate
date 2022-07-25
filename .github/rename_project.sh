@@ -21,6 +21,7 @@ echo "Prefix: $prefix";
 
 pageName=$(sed -r 's/(ui-plugin-)(.*)/\2/g' <<< "$urlname")
 cameCase=$(sed -r 's/(^|-)(\w)/\U\2/g' <<<"$pageName")
+guid=$(cat /proc/sys/kernel/random/uuid)
 
 echo "$cameCase $namespace $prefix"
 echo "Renaming project..."
@@ -49,7 +50,7 @@ git config --local user.email action@github.com
 git config --local user.name GitHub Action
 cd ..
 
-git mv ./src/BPP ./src/$prefix
+git mv ./src/BPP ./src/$prefix-$guid
 
 #git rm .github/rename_project.sh
 #git rm .github/workflows/template.yaml
