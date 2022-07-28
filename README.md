@@ -20,7 +20,7 @@ you can use a special developer setup and a GitHub action to build the code.
 * Use this project as template
 * Go to the CI action and start the workflow [rename the project from template](../..//actions/workflows/template.yaml) 
 * Modify the code and check it into GitHub
-* Make sure the build succeeds (look [here](../../actions/workflows/main.yml)
+* Make sure the build succeeds (look [here](../../actions/workflows/main.yml))
 * Login into the [developer instance](https://developer.matrixreq.net)
 * Create a new UI entry in the 
   [PLUGINS project](https://developer.matrixreq.net/PLUGINS/F-UI-2)
