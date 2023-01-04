@@ -1,4 +1,5 @@
 /* Setting interfaces */
+/// <reference types="matrix-requirements-api" />
 
 /**
  * This file defines all the data structures which might be shared between UI components and printing
@@ -30,7 +31,7 @@ export interface IProjectSettings {
 * These allow a user to add parameters to custom field defined by the plugin
 * each time it is added to a category
 */
-export interface IPluginFieldParameter extends IFieldParameter {
+export interface IPluginFieldParameter extends matrixApi.IPluginFieldParameterBase<IPluginFieldOptions> {
     /** see below */
     options: IPluginFieldOptions;
 }
@@ -49,6 +50,6 @@ export interface IPluginFieldValue {
 * 
 * This parameters can be overwritten in the layout and are used by the custom section printing
 */
-    export interface IPluginPrintParams extends IPrintFieldParams {
+export interface IPluginPrintParams extends matrixApi.IPluginPrintParamsBase {
     class:string // default:"". additional class for outermost container
 }

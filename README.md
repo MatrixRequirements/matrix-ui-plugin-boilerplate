@@ -31,16 +31,15 @@ This should install the script on the server and load it into the browser. The
 naming reflects the repository name, for example `https://developer.matrixreq.net/static/js/GitHub-MatrixRequirements_boiler-plate.js`
 
 ## APIs
-Matrix has a very large set of APIs which you can explore in the interface definitions
-in the lib directory. To simplify the start there are some wrappers around common 
-calls in the src/api directory. The intention is to make these a smaller but better
-documented set of often used APIs. Let us know if you're missing something!
+Matrix has a very large set of APIs, which are accessed through the
+`matrixApi` object installed on the global context. You can
+examine the api in the `./node_modules/matrix-requirements-api` folder.
 
 ## Local build 
 
 * Run this command to install required packages : `npm install`
-* Edit the file `package.json` : the `scripts/parcel` have an `--out-dir` that can be customized (to match your local custom directory. `--public-url` might need to be modified if you run matrixReq in a sub directory.
-* Run this command to build the package `npm run parcel`. This will compile and package the ts code to a `Main.js` and `Main.js.map` in the `out-dir` 
+* Edit the file `webpack.config.js` to give a unique name to your plugin (the current name is `UIPluginBoilerplate`.
+* Run this command to build the package `npm run build`. This will compile and package the ts code to a `UIPluginBoilerplate.js` and `UIPluginBoilerplate.js.map` in the `./dist` directory.
 
 
 

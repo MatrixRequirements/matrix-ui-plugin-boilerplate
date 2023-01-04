@@ -6,7 +6,7 @@ export class DashboardPage {
     settings: IProjectSettings;
 
     constructor() {
-        this.settings = { ...Plugin.config.projectSettingsPage.defaultSettings, ...IC.getSettingJSON(Plugin.config.projectSettingsPage.settingName, {}) } ;
+        this.settings = { ...Plugin.config.projectSettingsPage.defaultSettings, ...matrixApi.globalMatrix.ItemConfig.getSettingJSON(Plugin.config.projectSettingsPage.settingName, {}) };
     }
 
     /** Customize static HTML here */
@@ -24,8 +24,8 @@ export class DashboardPage {
     renderProjectPage() {
 
         const control = this.getDashboardDOM();
-        app.itemForm.append(
-            ml.UI.getPageTitle(
+        matrixApi.app.itemForm.append(
+            matrixApi.ml.UI.getPageTitle(
                 this.settings.myProjectSetting,
                 () => {
                     return control;
@@ -35,7 +35,7 @@ export class DashboardPage {
                 }
             )
         );
-        app.itemForm.append(control);
+        matrixApi.app.itemForm.append(control);
     }
     onResize() {
         /* Will be triggered when resizing. */

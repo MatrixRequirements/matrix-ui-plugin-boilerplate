@@ -1,13 +1,13 @@
-import { ControlCore } from "./core/ControlCore";
-import { IPluginFieldParameter, IPluginFieldValue, IPluginFieldOptions, IPluginPrintParams } from "./Interfaces";
-
+/// <reference types="matrixrequirements-type-declarations" />
+/// <reference types="matrix-requirements-api" />
+import { IPluginFieldOptions, IPluginFieldParameter, IPluginFieldValue, IPluginPrintParams } from "./Interfaces";
 /**
  * This implements a field which can be added to a category to be displayed when editing an item.
  * 
  * These fields can be printed in using the custom print sections.
  * 
  */
-export class Control extends ControlCore {
+export class Control extends matrixApi.ControlCore<IPluginFieldOptions> {
 
 
     /** default configuration of control */
