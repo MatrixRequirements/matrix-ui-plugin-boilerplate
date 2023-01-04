@@ -52,7 +52,7 @@ jobs:
       - name: Install dependencies and compile
         run: |
           npm install
-          npm run parcel-dist
+          npm run build
 
       - name: Lint the code
         run: |
