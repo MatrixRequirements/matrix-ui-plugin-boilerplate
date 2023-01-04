@@ -8,7 +8,7 @@ module.exports = {
     // entry files
     entry: {
         UIPluginBoilerplate: {
-            import: "./src/Main.ts",
+            import: "./src/BPP/Main.ts",
         },
     },
 
