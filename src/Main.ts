@@ -1,18 +1,27 @@
+/// <reference types="matrixrequirements-type-declarations" />
+/// <reference types="matrix-requirements-api" />
 
-import{ PluginCore,IPluginConfig} from "./core/PluginCore"
+import { Control } from "./Control";
+import { DashboardPage } from "./DashboardPage";
+import { ProjectSettingsPage } from "./ProjectSettingsPage";
+import { ServerSettingsPage } from "./ServerSettingsPage";
+import { Tool } from "./Tools";
+
 /** This class is allows you to configure the features of your plugin.
  * 
  *  You can also implement functions to into the plugin (at start in the constructor, when loading a project, when loading an item)
  * 
      */
-export class Plugin extends PluginCore {
+export class Plugin implements matrixApi.IExternalPlugin {
+
+    core: matrixApi.PluginCore;
 
     /**This part enables which 
      * 
      * See IPluginConfig interface for explanation of parameters
     */
     
-    static config: IPluginConfig = {
+    static config: matrixApi.IPluginConfig = {
         /*  Page in admin client to configure settings across all projects - set enabled to false if not needed. 
             The page itself is implemented in the _ServerSettingsPage.ts 
         */
@@ -93,9 +102,39 @@ export class Plugin extends PluginCore {
      * You can use it to initialize things like callbacks after item changes
      */
     constructor() {
-        super();
-        
         // here is a good place to register callbacks for UI events (like displaying or saving items)
+        this.core = new matrixApi.PluginCore(this);
+    }
+
+    PLUGIN_VERSION: any;
+    PLUGIN_NAME: any;
+    getDashboard(): matrixApi.IDashboardPage {
+        return new DashboardPage();
+    }
+    getProjectSettingsPage(): matrixApi.IPluginSettingPage<matrixApi.IProjectSettingsBase> {
+
+        if (matrixApi.app.isConfigApp()) {
+            return new ProjectSettingsPage(<matrixApi.IConfigApp><unknown>matrixApi.app);
+        }
+        return null;
+    }
+    getServerSettingsPage(): matrixApi.IPluginSettingPage<matrixApi.IServerSettingsBase> {
+        if (matrixApi.app.isConfigApp()) {
+            return new ServerSettingsPage(<matrixApi.IConfigApp><unknown>matrixApi.app);
+        }
+        return null;
+    }
+    getControl(ctrlObj: JQuery): matrixApi.ControlCoreBase {
+        return new Control(Plugin.config, ctrlObj);
+    }
+    getTool(): matrixApi.ITool {
+        return new Tool();
+    }
+    getConfig(): matrixApi.IPluginConfig {
+        return Plugin.config;
+    }
+    enableToolMenu(ul: JQuery, _hook: number): boolean {
+        return this.core.enabledInContext;
     }
 
     /**
@@ -117,7 +156,7 @@ export class Plugin extends PluginCore {
     * 
     * @param _item: the item which is being loaded in the UI 
     */
-    onInitItem(item: IItem) {
+    onInitItem(item: matrixApi.IItem) {
         
         // here is a good place to decide based on the selection in the tree, whether the plugin should be enabled 
         
@@ -133,9 +172,12 @@ declare global {
         plugins: unknown;
     }
 }
-    $(() => {
+
+$(() => {
     // Register the plugin
     $(function () {
-        window.plugins.register(new Plugin());
+        if (matrixApi.plugins["register"] != undefined) {
+            matrixApi.plugins.register(new Plugin().core);
+        }
     });
 });
